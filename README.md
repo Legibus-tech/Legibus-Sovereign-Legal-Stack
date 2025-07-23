@@ -7,6 +7,7 @@ The goal of this project is to provide **reproducible, privacy-compliant, and se
 ---
 
 ## 📦 Project Structure
+
 ├── flake.nix # Declarative system config (optional Docker alternative available)
 ├── deploy/
 │ ├── matrix.nix # NixOS module for Matrix (Synapse, Coturn)
@@ -27,7 +28,8 @@ The goal of this project is to provide **reproducible, privacy-compliant, and se
 │ └── .gitlab-ci.yml # CI/CD pipeline with compliance tests
 ├── LICENSES/
 │ ├── AGPL.txt
-│ └── MIT.txt└── CONTRIBUTING.md 
+│ └── MIT.txt
+└── CONTRIBUTING.md 
 
 ________________________________________
 ---
