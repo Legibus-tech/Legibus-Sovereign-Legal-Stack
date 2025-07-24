@@ -2,7 +2,7 @@
 
 **Federated Document Storage & Retrieval Infrastructure for AI-Powered Legal Research**
 
-![LEGAL-RAG Stack Architecture]([[https://via.placeholder.com/800x400?text=LEGAL-RAG+Architecture+Diagram](https://placehold.co/800x400/transparent/000?text=LEGAL-RAG+Architecture+Diagram)](https://placehold.co/800x400/transparent/000?text=LEGAL-RAG+Architecture+Diagram))
+![https://placehold.co/800x400/transparent/000?text=LEGAL-RAG+Architecture+Diagram](https://placehold.co/800x400/transparent/000?text=LEGAL-RAG+Architecture+Diagram)
 *Privacy-preserving AI for legal professionals*
 
 ---
