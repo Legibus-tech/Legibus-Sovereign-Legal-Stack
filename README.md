@@ -1,81 +1,106 @@
-# Legibus Sovereign Legal Stack – NGI Fediversity 2025
+# LEGAL-RAG Stack
 
-This repository hosts the open-source deliverables of the **Legibus Fediverse Legal Stack**, a project funded under the NGI Fediversity program (Horizon Europe Cascade Funding).
+**Federated Document Storage & Retrieval Infrastructure for AI-Powered Legal Research**
 
-The goal of this project is to provide **reproducible, privacy-compliant, and self-hostable infrastructure templates** for legal professionals and public institutions using open Fediverse tools like **Matrix** and **Nextcloud**.
+![LEGAL-RAG Stack Architecture]([https://via.placeholder.com/800x400?text=LEGAL-RAG+Architecture+Diagram](https://placehold.co/800x400/transparent/000?text=LEGAL-RAG+Architecture+Diagram)
+*Privacy-preserving AI for legal professionals*
 
 ---
 
-## 📦 Project Structure
+## 📌 Overview
+
+The LEGAL-RAG Stack is an open-source, self-hostable solution designed to empower legal professionals with AI-assisted research capabilities while maintaining strict compliance with privacy regulations (GDPR, professional secrecy). 
+
+This project combines:
+- **Document federation** (Nextcloud/S3)
+- **Open-source AI** (Mistral, LlamaIndex)
+- **Legal-specific tooling** (Légifrance/DILA connectors)
+- **Compliance-by-design** (audit logs, access controls)
+
+Built for lawyers, NGOs, and public institutions needing sovereign AI infrastructure.
+
+---
+
+## 🧩 Key Components
+
+| Component          | Technology       | Purpose                          |
+|--------------------|------------------|----------------------------------|
+| **Document Hub**   | Nextcloud        | Secure storage & sharing         |
+| **Vector Store**   | Qdrant/Weaviate  | Legal document embeddings        |
+| **RAG Engine**     | LlamaIndex       | Context-aware querying           |
+| **AI Gateway**     | FastAPI          | LLM integration (Mistral/others) |
+| **Compliance**     | OpenTelemetry    | Audit trails & access logs       |
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Docker 20.10+
+- Python 3.10+
+- 8GB+ RAM (for AI models)
+
+### Deployment
+```bash
+git clone https://github.com/yourorg/legal-rag.git
+cd legal-rag/deploy
+docker-compose up -d
 ```
-├── flake.nix # Declarative system config (optional Docker alternative available)
-├── deploy/
-│ ├── matrix.nix # NixOS module for Matrix (Synapse, Coturn)
-│ ├── nextcloud.nix # NixOS module for Nextcloud (with Collabora optional)
-│ └── config/
-│ ├── users.nix
-│ └── network.nix├── scripts/
-│ └── deploy.sh # Shell-based fallback for quick start
-├── docs/│ ├── user-guide.en.md
-│ ├── user-guide.fr.md
-│ ├── admin-checklist.pdf
-│ └── rgpd-models/
-│ ├── audit-log-policy.md
-│ └── legal-retention.md
-├── tests/
-│ └── ci-regression.nix # Nix-based test suite for reproducibility
-├── ci/
-│ └── .gitlab-ci.yml # CI/CD pipeline with compliance tests
-├── LICENSES/
-│ ├── AGPL.txt
-│ └── MIT.txt
-└── CONTRIBUTING.md 
+### Access:
+- Nextcloud: http://localhost:8080
+- RAG UI: http://localhost:5000
+
+## 🌐 Use Cases
+1. Cross-institution legal research
+  - Query federated case law databases while preserving client confidentiality
+2. NGO document analysis
+  - Rapidly analyze human rights reports with cited legal precedents
+3. Municipal compliance
+  - Maintain searchable archives of local regulations with AI-assisted summaries
+
+## 🔧 Customization
+### Adding Legal Sources
+Edit config/connectors.yml:
+
+```yaml
+legifrance:
+  endpoint: https://api.legifrance.gouv.fr
+  auth_type: oauth2
+  document_types: [codes, directives]
 ```
-________________________________________
----
+### Model Configuration
+Set AI preferences in **rag/config.py**:
 
-## 🧭 Who is this for?
+```python
+MODEL = "mistral-7b-instruct"
+MAX_TOKENS = 4096
+CACHE_DIR = "/data/vector_cache"
+```
 
-- 🇪🇺 Legal professionals & bar associations
-- 🏛️ Public administrations, municipalities, courts
-- 🛡️ Digital rights NGOs & privacy-conscious organizations
-- 🧑‍💻 System integrators for regulated sectors
+## 📜 License
+- Core Stack: **AGPL-3.0**
+- Documentation: **CC-BY-SA-4.0**
+- Example Data: **Non-commercial use only**
 
----
+## 🤝 Contributing
+We welcome:
+- Legal professionals for workflow validation
+- Developers for:
+  - New connector implementations
+  - UI/UX improvements
+  - Localization (FR/EN/ES)
+See CONTRIBUTING.md for guidelines.
 
-## 📚 Outputs & Roadmap
+## 📚 Documentation
+| Resource	| Link |
+|-------------------|----------------------|
+| Deployment Guide	| /docs/deployment.md |
+| API Reference	| /docs/api.md |
+| GDPR Compliance	| /docs/compliance.md 
+| Troubleshooting	| /docs/troubleshooting.md |
 
-This project delivers:
-- ✅ NixOS modules and Docker-compatible templates
-- ✅ Secure-by-default setups (TLS, E2EE, RBAC, GDPR logs)
-- ✅ Admin & user guides (EN/FR)
-- ✅ Compliance test cases (CI-ready)
-- ✅ Upstream contributions to `nixpkgs` and NUR
+## 📬 Contact
+For legal deployment support:
+contact@legibus.fr
 
-> **Expected project duration:** Sept 2025 → March 2026  
-> All outputs licensed under **AGPL v3**, **MIT**, or **CC BY-SA**
-
----
-
-## 🤝 Community & Contributions
-
-We welcome contributions, especially:
-- Translations (FR/EN)
-- Testing & deployment feedback
-- Issue reporting for compliance or reproducibility
-
----
-
-## 🔗 Related
-
-- [Project site on NLnet](https://nlnet.nl/project/LegibusStack)
-- [NGI Fediversity](https://nlnet.nl/fediversity)
-- [Legibus.eu](https://legibus.eu)
-
----
-
-## 💼 Legal & Funding Information
-
-- PIC Number: **875203647**  
-- Funded by the **European Union’s Horizon Europe Programme** under grant agreement via NGI Fediversity cascade scheme.  
-- Incubated at **EuraTechnologies**, supported by **France 2030** and **Bpifrance**.
+_"Empowering justice with open infrastructure"_
